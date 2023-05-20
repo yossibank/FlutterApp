@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // 1. エントリーポイントのmain関数
 void main() {
@@ -111,10 +112,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+          const Padding(padding: EdgeInsets.only(top: 16)),
           const Icon(
             FontAwesomeIcons.gift,
             color: Colors.teal,
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: IconButton(
+            onPressed: () async {
+              Uri url = Uri.parse("https://google.com");
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
+            icon: const Icon(FontAwesomeIcons.airbnb),
+          )),
         ]
       ),
       // 右下の「+」ボタンに対応するフローティングアクションボタン
