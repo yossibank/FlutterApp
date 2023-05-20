@@ -50,29 +50,55 @@ class _MyHomePageState extends State<MyHomePage> {
       // 画面上部のタイトル部分
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Row(children: [
+          Icon(Icons.create),
+          Text("初めてのタイトル"),
+        ]),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // 画面の中央に表示されるテキスト
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            // テキストの下に表示されるカウンタ値
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          const Text("HelloWorld"),
+          const Text("ハローワールド"),
+          TextButton(
+            onPressed: () => { print("ボタンが押されたよ") },
+            child: const Text("テキストボタン"),
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(
+                Icons.favorite,
+                color: Colors.pink,
+                size: 24.0,
+              ),
+              Icon(
+                Icons.audiotrack,
+                color: Colors.green,
+                size: 30.0,
+              ),
+              Icon(
+                Icons.beach_access,
+                color: Colors.blue,
+                size: 36.0,
+              ),
+            ],
+          ),
+        ]
       ),
       // 右下の「+」ボタンに対応するフローティングアクションボタン
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () => { print("押したね？") },
+        child: const Icon(Icons.timer),
+      ),
+      drawer: const Drawer(
+        child: Center(
+          child: Text("Drawer"),
+        ),
+      ),
+      endDrawer: const Drawer(
+        child: Center(
+          child: Text("EndDrawer"),
+        ),
       ),
     );
   }
