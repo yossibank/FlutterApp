@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice2/counter_page.dart';
 import 'package:practice2/test_page1.dart';
 import 'package:practice2/test_page2.dart';
 import 'package:practice2/test_page3.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
+        "/counter": (BuildContext context) => const CounterPage(title: "counter"),
         "/test1": (BuildContext context) => const TestPage1(title: "test1"),
         "/test2": (BuildContext context) => const TestPage2(title: "test2"),
         "/test3": (BuildContext context) => const TestPage3(title: "test3"),
@@ -47,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late PageController _pageController;
 
   final _pages = [
+    const CounterPage(title: "counter"),
     const TestPage1(title: "test1"),
     const TestPage2(title: "test2"),
     const TestPage3(title: "test3"),

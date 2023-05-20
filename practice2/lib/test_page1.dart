@@ -24,11 +24,17 @@ class _TestPage1State extends State<TestPage1> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
+          TextButton(
+            onPressed: () => {
+              Navigator.of(context).pop()
+            },
+            child: const Text("戻る")
+          ),
           IconButton(
             onPressed: () => {
               Navigator.of(context).pushNamed("/test2")
             },
-            icon: const Icon(Icons.arrow_forward)
+            icon: const Text("進む")
           )
         ],
       ),
