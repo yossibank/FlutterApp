@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:practice2/test_page5.dart';
 
-class TestPage3 extends StatefulWidget {
-  const TestPage3({Key? key}) : super(key: key);
+class TestPage4 extends StatefulWidget {
+  const TestPage4({Key? key}) : super(key: key);
 
   @override
-  State<TestPage3> createState() => _TestPage3State();
+  State<TestPage4> createState() => _TestPage4State();
 }
 
-class _TestPage3State extends State<TestPage3> with TickerProviderStateMixin {
+class _TestPage4State extends State<TestPage4> with TickerProviderStateMixin {
   late AnimationController _animationController;
+  late Animation<double> _animationDouble;
+  late Animation<Color?> _animationColor;
+
+  final Tween<double> _tweenDouble = Tween(begin: 0.0, end: 200.0);
+  final ColorTween _tweenColor = ColorTween(begin: Colors.green, end: Colors.blue);
 
   // 再生
   _forward() async {
@@ -40,6 +46,18 @@ class _TestPage3State extends State<TestPage3> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(seconds: 3)
     );
+
+    // TweenとAnimationControllerからAnimationを作る(サイズ)
+    _animationDouble = _tweenDouble.animate(_animationController);
+    _animationDouble.addListener(() {
+      setState(() {});
+    });
+
+    // TweenとAnimationControllerからAnimationを作る(色)
+    _animationColor = _tweenColor.animate(_animationController);
+    _animationColor.addListener(() {
+      setState(() {});
+    });
   }
 
   // 破棄
@@ -53,8 +71,7 @@ class _TestPage3State extends State<TestPage3> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Test3"),
-        centerTitle: true,
+        title: const Text("Test4"),
         actions: [
           TextButton(
             onPressed: () => {
@@ -64,7 +81,9 @@ class _TestPage3State extends State<TestPage3> with TickerProviderStateMixin {
           ),
           TextButton(
             onPressed: () => {
-              Navigator.of(context).pushNamed("/test4")
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return const TestPage5();
+              }))
             },
             child: const Text("進む")
           )
@@ -74,13 +93,25 @@ class _TestPage3State extends State<TestPage3> with TickerProviderStateMixin {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              "AnimationController:${_animationController.value}",
+              style: const TextStyle(fontSize: 10),
+            ),
+            Text(
+              "AnimationDouble:${_animationDouble.value}",
+              style: const TextStyle(fontSize: 10),
+            ),
+            Text(
+              "AnimationColor:${_animationColor.value}",
+              style: const TextStyle(fontSize: 10),
+            ),
             SizeTransition(
               sizeFactor: _animationController,
               child: Center(
                 child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Container(color: Colors.green)
+                  width: _animationDouble.value,
+                  height: _animationDouble.value,
+                  child: Container(color: _animationColor.value),
                 ),
               ),
             )
