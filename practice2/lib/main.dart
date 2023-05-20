@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practice2/test_page1.dart';
+import 'package:practice2/test_page2.dart';
+import 'package:practice2/test_page3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +19,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        "/test1": (BuildContext context) => const TestPage1(),
+        "/test2": (BuildContext context) => const TestPage2(),
+        "/test3": (BuildContext context) => const TestPage3(),
+      },
     );
   }
 }
@@ -30,6 +38,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   bool _flag = false;
+  int _selectedIndex = 0;
+
+  late PageController _pageController;
+
+  final _pages = [
+    const TestPage1(),
+    const TestPage2(),
+    const TestPage3(),
+  ];
 
   late AnimationController _animationController;
   late Animation<double> _animationDouble;
@@ -87,6 +104,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     _animationColor.addListener(() {
       setState(() {});
     });
+
+    _pageController = PageController(initialPage: _selectedIndex);
   }
 
   // 破棄
@@ -94,41 +113,54 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   void dispose() {
     _animationController.dispose();
     super.dispose();
+    _pageController.dispose();
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+        children: _pages,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "AnimationController:${_animationController.value}",
-              style: const TextStyle(fontSize: 10)
-            ),
-            Text(
-              "AnimationDouble:${_animationDouble.value}",
-              style: const TextStyle(fontSize: 10)
-            ),
-            Text(
-              "AnimationColor:${_animationColor.value}",
-              style: const TextStyle(fontSize: 10)
-            ),
-            SizeTransition(
-              sizeFactor: _animationController,
-              child: Center(
-                child: SizedBox(
-                  width: _animationDouble.value,
-                  height: _animationDouble.value,
-                  child: Container(color: _animationColor.value)
-                )
-              ),
-            )
+      // body: TestPage1(),
+      // appBar: AppBar(
+      //   backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      //   title: Text(widget.title),
+      // ),
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: <Widget>[
+      //       Text(
+      //         "AnimationController:${_animationController.value}",
+      //         style: const TextStyle(fontSize: 10)
+      //       ),
+      //       Text(
+      //         "AnimationDouble:${_animationDouble.value}",
+      //         style: const TextStyle(fontSize: 10)
+      //       ),
+      //       Text(
+      //         "AnimationColor:${_animationColor.value}",
+      //         style: const TextStyle(fontSize: 10)
+      //       ),
+      //       SizeTransition(
+      //         sizeFactor: _animationController,
+      //         child: Center(
+      //           child: SizedBox(
+      //             width: _animationDouble.value,
+      //             height: _animationDouble.value,
+      //             child: Container(color: _animationColor.value)
+      //           )
+      //         ),
+      //       )
             // AnimatedOpacity(
             //   opacity: _flag ? 0.1 : 1.0,
             //   duration: const Duration(seconds: 3),
@@ -169,26 +201,26 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             //     ? const Text("なにもない")
             //     : const Icon(Icons.favorite, color: Colors.pink),
             // ),
-          ],
-        ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FloatingActionButton(
-            onPressed: _forward,
-            child: const Icon(Icons.arrow_forward),
-          ),
-          FloatingActionButton(
-            onPressed: _stop,
-            child: const Icon(Icons.pause),
-          ),
-          FloatingActionButton(
-            onPressed: _reverse,
-            child: const Icon(Icons.arrow_back),
-          )
-        ],
-      ),
+      //     ],
+      //   ),
+      // ),
+      // floatingActionButton: Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
+      //     FloatingActionButton(
+      //       onPressed: _forward,
+      //       child: const Icon(Icons.arrow_forward),
+      //     ),
+      //     FloatingActionButton(
+      //       onPressed: _stop,
+      //       child: const Icon(Icons.pause),
+      //     ),
+      //     FloatingActionButton(
+      //       onPressed: _reverse,
+      //       child: const Icon(Icons.arrow_back),
+      //     )
+      //   ],
+      // ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _click,
       //   child: const Icon(Icons.add),
