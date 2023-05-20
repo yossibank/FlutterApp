@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 1. エントリーポイントのmain関数
 void main() {
@@ -110,6 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+          const Icon(
+            FontAwesomeIcons.gift,
+            color: Colors.teal,
+          ),
         ]
       ),
       // 右下の「+」ボタンに対応するフローティングアクションボタン
@@ -131,3 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// どんなWidgetがあるのかの紹介動画
+// [https://www.youtube.com/watch?v=1wBpX0iFl5E&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG]
+
+// どんなパッケージがあるのかのリポジトリ
+// [https://pub.dev/]
