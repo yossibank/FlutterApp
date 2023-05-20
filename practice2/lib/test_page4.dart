@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:practice2/test_page5.dart';
 
 class TestPage4 extends StatefulWidget {
-  const TestPage4({Key? key}) : super(key: key);
+  const TestPage4({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<TestPage4> createState() => _TestPage4State();
@@ -71,7 +73,7 @@ class _TestPage4State extends State<TestPage4> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Test4"),
+        title: Text(widget.title),
         actions: [
           TextButton(
             onPressed: () => {
@@ -82,7 +84,7 @@ class _TestPage4State extends State<TestPage4> with TickerProviderStateMixin {
           TextButton(
             onPressed: () => {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return const TestPage5();
+                return const TestPage5(title: "test5");
               }))
             },
             child: const Text("進む")

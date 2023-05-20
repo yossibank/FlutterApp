@@ -2,7 +2,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class TestPage5 extends StatefulWidget {
-  const TestPage5({Key? key}) : super(key: key);
+  const TestPage5({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<TestPage5> createState() => _TestPage5State();
@@ -59,7 +61,7 @@ class _TestPage5State extends State<TestPage5> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("test5"),
+        title: Text(widget.title),
       ),
       body: Center(
         child: AnimatedBuilder(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TestPage3 extends StatefulWidget {
-  const TestPage3({Key? key}) : super(key: key);
+  const TestPage3({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<TestPage3> createState() => _TestPage3State();
@@ -53,7 +55,7 @@ class _TestPage3State extends State<TestPage3> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Test3"),
+        title: Text(widget.title),
         centerTitle: true,
         actions: [
           TextButton(

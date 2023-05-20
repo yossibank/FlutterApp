@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
-        "/test1": (BuildContext context) => const TestPage1(),
-        "/test2": (BuildContext context) => const TestPage2(),
-        "/test3": (BuildContext context) => const TestPage3(),
-        "/test4": (BuildContext context) => const TestPage4(),
-        "/test5": (BuildContext context) => const TestPage5(),
+        "/test1": (BuildContext context) => const TestPage1(title: "test1"),
+        "/test2": (BuildContext context) => const TestPage2(title: "test2"),
+        "/test3": (BuildContext context) => const TestPage3(title: "test3"),
+        "/test4": (BuildContext context) => const TestPage4(title: "test4"),
+        "/test5": (BuildContext context) => const TestPage5(title: "test5"),
       },
     );
   }
@@ -47,11 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
   late PageController _pageController;
 
   final _pages = [
-    const TestPage1(),
-    const TestPage2(),
-    const TestPage3(),
-    const TestPage4(),
-    const TestPage5(),
+    const TestPage1(title: "test1"),
+    const TestPage2(title: "test2"),
+    const TestPage3(title: "test3"),
+    const TestPage4(title: "test4"),
+    const TestPage5(title: "test5"),
   ];
 
   // 生成

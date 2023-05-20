@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TestPage2 extends StatefulWidget {
-  const TestPage2({super.key});
+  const TestPage2({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<TestPage2> createState() => _TestPage2State();
@@ -20,7 +22,7 @@ class _TestPage2State extends State<TestPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Test2"),
+        title: Text(widget.title),
         centerTitle: true,
         actions: [
           TextButton(
