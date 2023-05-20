@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 3. タイトルとテーマの設定。画面の本体はMyHomePageで作成
+    // 3. タイトルとテーマの設定。画面の本体はMyHomePageで作成する
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -24,22 +24,41 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// stateful・・・状態を持つ。動的で変化する。状態によって同じ入力でも出力が変わることがある。
+// stateless・・・状態を持たない。静的で変化しない。どんな時でも同じ入力に対して同じ出力になる。
+
+// StatefulWidget
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
+  // _MyHomePageStateを利用する
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// State
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String _type = "偶数";
 
   // 5. カウンタが押された時のメソッド
   void _incrementCounter() {
     setState(() {
       _counter++;
-      print("HelloWorld");
+
+      if (_counter % 2 == 0) {
+        _type = "偶数";
+      } else {
+        _type = "奇数";
+      }
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
     });
   }
 
@@ -57,11 +76,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          const Text("HelloWorld"),
-          const Text("ハローワールド"),
+          Text("$_counter"),
+          Text(
+            _type,
+            style: const TextStyle(fontSize: 20.0, color: Colors.red),
+          ),
+          if (_counter % 2 == 0)
+          const Text(
+            "偶数！！！",
+            style: TextStyle(fontSize: 20.0, color: Colors.grey),
+          ),
           TextButton(
-            onPressed: () => { print("ボタンが押されたよ") },
-            child: const Text("テキストボタン"),
+            onPressed: _resetCounter,
+            child: const Text("リセット"),
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,8 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       // 右下の「+」ボタンに対応するフローティングアクションボタン
       floatingActionButton: FloatingActionButton(
-        onPressed: () => { print("押したね？") },
-        child: const Icon(Icons.timer),
+        onPressed: _incrementCounter,
+        tooltip: "Increment",
+        child: const Icon(Icons.add),
       ),
       drawer: const Drawer(
         child: Center(
