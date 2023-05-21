@@ -4,6 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
+// StatelessWidgetで静的なWidgetを返す
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -13,11 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      theme: ThemeData(primarySwatch: Colors.red),
       home: MyHomePage(title: title),
     );
   }
 }
 
+// StatefulWidgetで動的なWidgetを生成する。実際の状態管理はcreateState()で作成する
 class MyHomePage extends StatefulWidget {
   final String title;
 
@@ -39,6 +42,7 @@ class Data {
   }
 }
 
+// StatefulWidgetの状態を管理する。状態に応じて表示するWidgetを返す。
 class _MyHomePageState extends State<MyHomePage> {
   static final _data = [
     Data('Apple', 200),
@@ -46,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Data('Peach', 300),
   ];
 
-  Data _item = _data[0];
+  Data _item = (_data..shuffle()).first;
 
   void _setData() {
     setState(() {
@@ -58,11 +62,44 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Set data'),
+        title: const Text('Set data'),
       ),
-      body: Text(
-        _item.toString(),
-        style: const TextStyle(fontSize: 32.0),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Text(
+                'One',
+                style: TextStyle(fontSize: 32.0, color: Colors.red, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'Two',
+                style: TextStyle(fontSize: 32.0, color: Colors.blue, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'Three',
+                style: TextStyle(fontSize: 32.0, color: Colors.green, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Text(
+            _item.toString(),
+            style: const TextStyle(fontSize: 32.0),
+          ),
+          Text(
+            _item.toString(),
+            style: const TextStyle(fontSize: 32.0),
+          ),
+          Text(
+            _item.toString(),
+            style: const TextStyle(fontSize: 32.0),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _setData,
