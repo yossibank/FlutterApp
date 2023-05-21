@@ -12,6 +12,8 @@ class _TestPage3State extends State<TestPage3> {
   static var _selected = 'One';
   static var _sliderMessage = 'slider value $_value';
   static var _value = 0.0;
+  static var _alertMessage = 'Alert';
+  static var _simpleAlertMessage = 'Simple Alert';
 
   void popupSelected(String? value) {
     setState(() {
@@ -24,6 +26,61 @@ class _TestPage3State extends State<TestPage3> {
     setState(() {
       _value = value.floorToDouble();
       _sliderMessage = 'slider value: $_value';
+    });
+  }
+
+  void buttonPressed() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Hello!'),
+        content: const Text('This is sample'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop<String>(context, 'Cancel'),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop<String>(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    ).then<void>((value) => resultAlert(value));
+  }
+
+  void simpleButtonPressed() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => SimpleDialog(
+        title: const Text('Select assignment'),
+        children: <Widget>[
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop<String>(context, 'One'),
+            child: const Text('One'),
+          ),
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop<String>(context, 'Two'),
+            child: const Text('Two'),
+          ),
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop<String>(context, 'Three'),
+            child: const Text('Three'),
+          ),
+        ],
+      ),
+    ).then<void>((value) => simpleResultAlert(value));
+  }
+
+  void resultAlert(String value) {
+    setState(() {
+      _alertMessage = 'Alert $value';
+    });
+  }
+
+  void simpleResultAlert(String value) {
+    setState(() {
+      _simpleAlertMessage = 'Simple Alert $value';
     });
   }
 
@@ -115,13 +172,71 @@ class _TestPage3State extends State<TestPage3> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Slider(
                 onChanged: sliderChanged,
                 min: 0.0,
                 max: 100.0,
                 divisions: 20,
                 value: _value,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                _alertMessage,
+                style: const TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto',
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ElevatedButton(
+                  onPressed: buttonPressed,
+                  child: const Text(
+                    'Show Dialog!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                _simpleAlertMessage,
+                style: const TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto',
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ElevatedButton(
+                  onPressed: simpleButtonPressed,
+                  child: const Text(
+                    'Show Simple Dialog!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
