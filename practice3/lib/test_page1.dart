@@ -11,7 +11,7 @@ class TestPage1 extends StatefulWidget {
 
 class _TestPage1State extends State<TestPage1> {
   static var _message = 'じゃんけん結果';
-  static final _janken = <String>['ぐー', 'チョキ', 'パー'];
+  static final _janken = <String>['グー', 'チョキ', 'パー'];
 
   void buttonPressed() {
     setState(() {
@@ -45,6 +45,34 @@ class _TestPage1State extends State<TestPage1> {
               child: const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Icon(Icons.android, size: 50),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: buttonPressed,
+              child: const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Icon(Icons.apple, size: 50),
+              ),
+            ),
+            IconButton(
+              onPressed: buttonPressed,
+              icon: const Icon(Icons.insert_emoticon),
+              iconSize: 50.0,
+              color: Colors.green,
+            ),
+            RawMaterialButton(
+              onPressed: buttonPressed,
+              padding: const EdgeInsets.all(10.0),
+              elevation: 10.0,
+              fillColor: Colors.white,
+              child: const Text(
+                "Push me!",
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto',
+                ),
               ),
             ),
           ],
