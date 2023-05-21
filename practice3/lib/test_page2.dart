@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TestPage2 extends StatefulWidget {
-  const TestPage2({Key? key, required this.title}) : super(key: key);
+  const TestPage2({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   final String title;
 
@@ -46,7 +49,20 @@ class _TestPage2State extends State<TestPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: [
+          TextButton(
+            onPressed: () => {
+              Navigator.of(context).pushNamed("/test3"),
+            },
+            child: const Text(
+              '進む',
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

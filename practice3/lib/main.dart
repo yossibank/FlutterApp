@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice3/test_page1.dart';
 import 'package:practice3/test_page2.dart';
+import 'package:practice3/test_page3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/test1": (BuildContext context) => const TestPage1(title: "test1"),
         "/test2": (BuildContext context) => const TestPage2(title: "test2"),
+        "/test3": (BuildContext context) => const TestPage3(),
       },
     );
   }
@@ -29,7 +31,10 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   final String title;
 
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -70,8 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Set data'),
         actions: [
           TextButton(
-            onPressed: () => {Navigator.of(context).pushNamed("/test1")},
-            child: const Text("進む", style: TextStyle(color: Colors.black)),
+            onPressed: () => {
+              Navigator.of(context).pushNamed("/test1"),
+            },
+            child: const Text(
+              "進む",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),
@@ -86,15 +96,27 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text(
                 'One',
-                style: TextStyle(fontSize: 32.0, color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Text(
                 'Two',
-                style: TextStyle(fontSize: 32.0, color: Colors.blue, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Text(
                 'Three',
-                style: TextStyle(fontSize: 32.0, color: Colors.green, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TestPage1 extends StatefulWidget {
-  const TestPage1({Key? key, required this.title}) : super(key: key);
+  const TestPage1({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   final String title;
 
@@ -26,8 +29,13 @@ class _TestPage1State extends State<TestPage1> {
         title: Text(widget.title),
         actions: [
           TextButton(
-            onPressed: () => {Navigator.of(context).pushNamed("/test2")},
-            child: const Text("進む", style: TextStyle(color: Colors.black)),
+            onPressed: () => {
+              Navigator.of(context).pushNamed("/test2"),
+            },
+            child: const Text(
+              "進む",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),
