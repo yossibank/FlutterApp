@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice3/test_page1.dart';
+import 'package:practice3/test_page2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: title),
       routes: {
         "/test1": (BuildContext context) => const TestPage1(title: "test1"),
+        "/test2": (BuildContext context) => const TestPage2(title: "test2"),
       },
     );
   }

@@ -22,7 +22,15 @@ class _TestPage1State extends State<TestPage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: [
+          TextButton(
+            onPressed: () => {Navigator.of(context).pushNamed("/test2")},
+            child: const Text("進む", style: TextStyle(color: Colors.black)),
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
