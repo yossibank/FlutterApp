@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice3/test_page1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.red),
       home: MyHomePage(title: title),
+      routes: {
+        "/test1": (BuildContext context) => const TestPage1(title: "test1"),
+      },
     );
   }
 }
@@ -63,6 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Set data'),
+        actions: [
+          TextButton(
+            onPressed: () => {Navigator.of(context).pushNamed("/test1")},
+            child: const Text("進む", style: TextStyle(color: Colors.black)),
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
