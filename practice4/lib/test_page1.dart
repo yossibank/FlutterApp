@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice4/test_page2.dart';
 
 class TestPage1 extends StatefulWidget {
   const TestPage1({Key? key}) : super(key: key);
@@ -59,6 +60,18 @@ class _TestPage1State extends State<TestPage1> {
             tooltip: 'subtract star...',
             icon: const Icon(Icons.favorite),
           ),
+          IconButton(
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const TestPage2(),
+                ),
+              ),
+            },
+            tooltip: 'next push',
+            icon: const Icon(Icons.navigate_next),
+          ),
         ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(30.0),
@@ -73,12 +86,82 @@ class _TestPage1State extends State<TestPage1> {
           ),
         ),
       ),
-      body: Center(
-        child: Text(
-          _message,
-          style: const TextStyle(
-            fontSize: 28.0,
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Container(
+              color: Colors.blue,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'One',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'Two',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.blue,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'Three',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'Four',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.blue,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'Five',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'Six',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.blue,
+              height: 120.0,
+              child: const Center(
+                child: Text(
+                  'Seven',
+                  style: TextStyle(fontSize: 32.0),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
