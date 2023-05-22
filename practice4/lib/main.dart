@@ -34,11 +34,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  static var _tabMessage = 'you tapped: ???';
+  static var _listMessage = 'you tapped: ???';
+  static var _tabIndex = 0;
+  static var _listIndex = 0;
 
-  void _incrementCounter() {
+  void tapBottomIcon(int value) {
+    var items = ['Android', 'Heart', 'Home'];
+
     setState(() {
-      _counter++;
+      _tabIndex = value;
+      _tabMessage = 'you tapped: "${items[_tabIndex]}"';
+    });
+  }
+
+  void tapTile() {
+    setState(() {
+      _listMessage = 'you tapped: No. $_listIndex';
     });
   }
 
@@ -57,24 +69,105 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Text(
+            _tabMessage,
+            style: const TextStyle(fontSize: 18.0),
+          ),
+          Text(
+            _listMessage,
+            style: const TextStyle(fontSize: 18.0),
+          ),
+          ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(20.0),
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(
+                  Icons.android,
+                  size: 32.0,
+                ),
+                title: const Text(
+                  'First Item',
+                  style: TextStyle(
+                    fontSize: 28.0,
+                  ),
+                ),
+                selected: _listIndex == 1,
+                onTap: () {
+                  _listIndex = 1;
+                  tapTile();
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.favorite,
+                  size: 32.0,
+                ),
+                title: const Text(
+                  'Second Item',
+                  style: TextStyle(
+                    fontSize: 28.0,
+                  ),
+                ),
+                selected: _listIndex == 2,
+                onTap: () {
+                  _listIndex = 2;
+                  tapTile();
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.home,
+                  size: 32.0,
+                ),
+                title: const Text(
+                  'Third Item',
+                  style: TextStyle(
+                    fontSize: 28.0,
+                  ),
+                ),
+                selected: _listIndex == 3,
+                onTap: () {
+                  _listIndex = 3;
+                  tapTile();
+                },
+              ),
+            ],
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _tabIndex,
+        backgroundColor: Colors.lightBlueAccent,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            label: 'Android',
+            icon: Icon(
+              Icons.android,
+              color: Colors.black,
+              size: 30,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Favorite',
+            icon: Icon(
+              Icons.favorite,
+              color: Colors.red,
+              size: 30,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+        ],
+        onTap: tapBottomIcon,
       ),
     );
   }

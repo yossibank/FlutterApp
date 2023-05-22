@@ -8,7 +8,7 @@ class TestPage1 extends StatefulWidget {
 }
 
 class _TestPage1State extends State<TestPage1> {
-  static var _message = 'OK';
+  static var _message = '☆☆☆☆☆';
   static var _stars = '☆☆☆☆☆';
   static var _star = 0;
 
