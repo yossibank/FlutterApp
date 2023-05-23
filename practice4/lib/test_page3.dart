@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TestPage3 extends StatefulWidget {
-  const TestPage3({Key? key}) : super(key: key);
+  final String _value;
+
+  const TestPage3(this._value, {super.key});
 
   @override
   State<TestPage3> createState() => _TestPage3State();
@@ -15,8 +17,8 @@ class _TestPage3State extends State<TestPage3> {
         title: const Text('test3'),
       ),
       body: Center(
-        child: const Text(
-          'Next Screen',
+        child: Text(
+          'you typed:${widget._value}',
           style: const TextStyle(fontSize: 32.0),
         ),
       ),
@@ -41,6 +43,10 @@ class _TestPage3State extends State<TestPage3> {
         onTap: (int value) {
           if (value == 0) {
             Navigator.pop(context);
+          }
+
+          if (value == 1) {
+            Navigator.of(context).pushNamed('/test3/third');
           }
         },
       ),

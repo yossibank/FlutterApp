@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice4/test_page1.dart';
+import 'package:practice4/test_page2.dart';
+import 'package:practice4/test_page3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +18,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      initialRoute: '/',
       routes: {
-        "/test1": (BuildContext context) => const TestPage1(),
+        '/': (context) => const MyHomePage(title: 'Flutter Demo'),
+        '/test1': (context) => const TestPage1(),
+        '/test2': (context) => const TestPage2(),
+        '/test3/second': (context) => const TestPage3('Second'),
+        '/test3/third': (context) => const TestPage3('Third'),
       },
-      home: const MyHomePage(title: 'Flutter Demo'),
     );
   }
 }
