@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practice4/test_page1.dart';
 import 'package:practice4/test_page2.dart';
 import 'package:practice4/test_page3.dart';
+import 'package:practice4/test_page4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/test2': (context) => const TestPage2(),
         '/test3/second': (context) => const TestPage3('Second'),
         '/test3/third': (context) => const TestPage3('Third'),
+        '/test4': (context) => const TestPage4(),
       },
     );
   }
@@ -40,7 +42,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static var _tabMessage = 'you tapped: ???';
+  static var _bottomTabMessage = 'you tapped: ???';
   static var _listMessage = 'you tapped: ???';
   static var _tabIndex = 0;
   static var _listIndex = 0;
@@ -50,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     setState(() {
       _tabIndex = value;
-      _tabMessage = 'you tapped: "${items[_tabIndex]}"';
+      _bottomTabMessage = 'you tapped: "${items[_tabIndex]}"';
     });
   }
 
@@ -78,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           Text(
-            _tabMessage,
+            _bottomTabMessage,
             style: const TextStyle(fontSize: 18.0),
           ),
           Text(

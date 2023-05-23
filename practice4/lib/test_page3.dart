@@ -46,7 +46,7 @@ class _TestPage3State extends State<TestPage3> {
           }
 
           if (value == 1) {
-            Navigator.of(context).pushNamed('/test3/third');
+            Navigator.of(context).pushNamed('/test4');
           }
         },
       ),
