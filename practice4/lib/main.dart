@@ -44,8 +44,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   static var _bottomTabMessage = 'you tapped: ???';
   static var _listMessage = 'you tapped: ???';
+  static var _drawerMessage = 'you tapped: ???';
   static var _tabIndex = 0;
   static var _listIndex = 0;
+  static var _tapped = 0;
+  static var _items = <Widget>[];
 
   void tapBottomIcon(int value) {
     var items = ['Android', 'Heart', 'Home'];
@@ -60,6 +63,32 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _listMessage = 'you tapped: No. $_listIndex';
     });
+  }
+
+  void tapItem() {
+    Navigator.pop(context);
+
+    setState(() {
+      _drawerMessage = 'you tapped: [$_tapped]';
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    for (var i = 0; i < 5; i++) {
+      var item = ListTile(
+        leading: const Icon(Icons.android),
+        title: Text('No, $i'),
+        onTap: () {
+          _tapped = i;
+          tapItem();
+        },
+      );
+
+      _items.add(item);
+    }
   }
 
   @override
@@ -77,6 +106,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(20.0),
+            children: _items,
+          ),
+        ),
+      ),
       body: Column(
         children: <Widget>[
           Text(
@@ -85,6 +123,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Text(
             _listMessage,
+            style: const TextStyle(fontSize: 18.0),
+          ),
+          Text(
+            _drawerMessage,
             style: const TextStyle(fontSize: 18.0),
           ),
           ListView(
