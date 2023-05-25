@@ -13,6 +13,14 @@ class _TestPage1State extends State<TestPage1> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TestPage1'),
+        actions: [
+          IconButton(
+            onPressed: () => {
+              Navigator.of(context).pushNamed('/test2'),
+            },
+            icon: const Icon(Icons.navigate_next, size: 32),
+          ),
+        ],
       ),
       body: CustomPaint(
         painter: Test1Painter(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice5/test_page1.dart';
+import 'package:practice5/test_page2.dart';
+import 'package:practice5/test_page3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(title: 'Home'),
         '/test1': (context) => const TestPage1(),
+        '/test2': (context) => const TestPage2(),
+        '/test3': (context) => const TestPage3(),
       },
     );
   }
