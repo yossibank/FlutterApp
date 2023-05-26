@@ -33,6 +33,14 @@ class _TestPage4State extends State<TestPage4> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TestPage4'),
+        actions: [
+          IconButton(
+            onPressed: () => {
+              Navigator.of(context).pushNamed('/test5'),
+            },
+            icon: const Icon(Icons.navigate_next, size: 32),
+          ),
+        ],
       ),
       body: CustomPaint(
         painter: Test4Painter(_img),
@@ -49,8 +57,6 @@ class Test4Painter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint p = Paint();
-
-    Offset off = const Offset(50.0, 50.0);
 
     final img = _img;
 

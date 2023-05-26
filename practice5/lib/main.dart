@@ -3,6 +3,7 @@ import 'package:practice5/test_page1.dart';
 import 'package:practice5/test_page2.dart';
 import 'package:practice5/test_page3.dart';
 import 'package:practice5/test_page4.dart';
+import 'package:practice5/test_page5.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/test2': (context) => const TestPage2(),
         '/test3': (context) => const TestPage3(),
         '/test4': (context) => const TestPage4(),
+        '/test5': (context) => const TestPage5(),
       },
     );
   }
