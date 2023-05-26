@@ -15,6 +15,14 @@ class _TestPage3State extends State<TestPage3> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TestPage3'),
+        actions: [
+          IconButton(
+            onPressed: () => {
+              Navigator.of(context).pushNamed('/test4'),
+            },
+            icon: const Icon(Icons.navigate_next, size: 32),
+          ),
+        ],
       ),
       body: CustomPaint(
         painter: Test3Painter(),
