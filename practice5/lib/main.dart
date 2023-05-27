@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:practice5/test_page1.dart';
+import 'package:practice5/test_page10.dart';
 import 'package:practice5/test_page2.dart';
 import 'package:practice5/test_page3.dart';
 import 'package:practice5/test_page4.dart';
 import 'package:practice5/test_page5.dart';
 import 'package:practice5/test_page6.dart';
 import 'package:practice5/test_page7.dart';
+import 'package:practice5/test_page8.dart';
+import 'package:practice5/test_page9.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +35,9 @@ class MyApp extends StatelessWidget {
         '/test5': (context) => const TestPage5(),
         '/test6': (context) => const TestPage6(),
         '/test7': (context) => const TestPage7(),
+        '/test8': (context) => const TestPage8(),
+        '/test9': (context) => const TestPage9(),
+        '/test10': (context) => const TestPage10(),
       },
     );
   }
@@ -56,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () => {
-              Navigator.of(context).pushNamed('/test7'),
+              Navigator.of(context).pushNamed('/test9'),
             },
             icon: const Icon(Icons.navigate_next, size: 32),
           ),

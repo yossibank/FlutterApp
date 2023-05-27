@@ -8,7 +8,7 @@ class TestPage7 extends StatefulWidget {
 }
 
 class _TestPage7State extends State<TestPage7> {
-  static ValueNotifier<int> _value = ValueNotifier<int>(0);
+  static final ValueNotifier<int> _value = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
