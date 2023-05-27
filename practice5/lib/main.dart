@@ -4,6 +4,8 @@ import 'package:practice5/test_page2.dart';
 import 'package:practice5/test_page3.dart';
 import 'package:practice5/test_page4.dart';
 import 'package:practice5/test_page5.dart';
+import 'package:practice5/test_page6.dart';
+import 'package:practice5/test_page7.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/test3': (context) => const TestPage3(),
         '/test4': (context) => const TestPage4(),
         '/test5': (context) => const TestPage5(),
+        '/test6': (context) => const TestPage6(),
+        '/test7': (context) => const TestPage7(),
       },
     );
   }
@@ -52,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () => {
-              Navigator.of(context).pushNamed('/test1'),
+              Navigator.of(context).pushNamed('/test7'),
             },
             icon: const Icon(Icons.navigate_next, size: 32),
           ),
