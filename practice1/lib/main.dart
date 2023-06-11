@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice1/chapter1.dart';
+import 'package:practice1/chapter2_1.dart';
+import 'package:practice1/chapter2_2.dart';
 
 // エントリーポイントのmain関数
 void main() {
@@ -17,10 +19,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: const AppBarTheme(
+          color: Colors.blueAccent,
+          foregroundColor: Colors.white,
+        ),
         useMaterial3: true,
       ),
-      home: const Chapter1(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Chapter1(),
+        '/chapter2-1': (context) => const Chapter2Page1(),
+        '/chapter2-2': (context) => const Chapter2Page2(),
+      },
     );
   }
 }

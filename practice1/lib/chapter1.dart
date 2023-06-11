@@ -24,6 +24,15 @@ class _Chapter1State extends State<Chapter1> {
       // 画面上部のタイトル部分
       appBar: AppBar(
         title: const Text('Chapter1'),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.of(context).pushNamed('/chapter2-1'),
+            icon: const Icon(
+              Icons.navigate_next,
+              size: 32,
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
