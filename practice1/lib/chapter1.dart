@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Chapter1 extends StatefulWidget {
-  const Chapter1({super.key});
+class Chapter1Page extends StatefulWidget {
+  const Chapter1Page({super.key});
 
   @override
-  State<Chapter1> createState() => _Chapter1State();
+  State<Chapter1Page> createState() => _Chapter1PageState();
 }
 
-class _Chapter1State extends State<Chapter1> {
+class _Chapter1PageState extends State<Chapter1Page> {
   int _counter = 0;
 
   // カウンタが押された時のメソッド
@@ -24,15 +24,6 @@ class _Chapter1State extends State<Chapter1> {
       // 画面上部のタイトル部分
       appBar: AppBar(
         title: const Text('Chapter1'),
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.of(context).pushNamed('/chapter2-1'),
-            icon: const Icon(
-              Icons.navigate_next,
-              size: 32,
-            ),
-          ),
-        ],
       ),
       body: Center(
         child: Column(

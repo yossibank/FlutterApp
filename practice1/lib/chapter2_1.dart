@@ -26,7 +26,7 @@ class _Chapter2Page1State extends State<Chapter2Page1> {
           const Text('ハローワールド'),
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('テキストボタン'),
+            child: const Text('戻る'),
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -55,7 +55,7 @@ class _Chapter2Page1State extends State<Chapter2Page1> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed('/chapter2-2'),
+        onPressed: () => debugPrint('ボタンタップ2'),
         child: const Icon(Icons.timer),
       ),
       drawer: const Drawer(
